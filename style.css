@@ -3,7 +3,11 @@
     bottom: 0;
     width: 100%;
     height: 60px;
-    line-height: 60px;
     background-color: darkgrey;
 }
 
+#recent-table{
+    background-color: red;
+    height: 10px;
+    /* overflow: scroll; */
+}
