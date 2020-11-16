@@ -13,3 +13,25 @@
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
+
+#banner-img {
+    background-image: url("https://bit.ly/2H4Q3AU");
+    background-color: #cccccc;
+    width: 95%;
+    height: 200px;
+    object-fit: cover;
+    background-position: 80% 80%;
+    background-repeat: no-repeat;
+    border-radius: 8px 8px 0px 0px;
+}
+
+ul.nav-buttons {
+    white-space: nowrap;
+    overflow-x: scroll;
+    width: 54vw;
+}
+
+ul.nav-buttons li {
+    display: inline-block;
+    float: none;
+}

@@ -15,108 +15,131 @@
     <body>
         <div class="container-fluid" id="logo-header">
             <div class="row">
-                <div class="col-12 text-center my-4">
+                <div class="col-12 text-center my-2">
                     <h1>Shoppr</h1>
                 </div>
             </div>
         </div>
-        <div class="container-fluid" id="input-area">
-            <div class="row text-center my-2">
-                <div class="col col-xs-12 col-md-4">
-                    <h4>Add an item:</h4>
-                    <input type="text">
+        <div class="container-fluid" id="content"> 
+            <div class="row">
+                <div class="col-xs-12 col-sm-5">
+                    <div class="row text-center my-2">
+                        <div class="col-12">
+                            <h4>Add an item:</h4>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="row text-center my-2">
+                        <div class="col col-xs-12 col-md-12">
+                            <button class="mx-2">-</button><span>1</span><button class="mx-2">+</button>
+                        </div>
+                    </div>
+                    <div class="row text-center my-2">
+                        <div class="col-6">
+                            <button>Veg & Fruit</button>
+                        </div>
+                        <div class="col-6">
+                            <button>Front Shelves</button>
+                        </div>
+                        <div class="col-6">
+                            <button>Fridges</button>
+                        </div>
+                        <div class="col-6">
+                            <button>Freezers</button>
+                        </div>
+                        <div class="col-6">
+                            <button>Middle Shelves</button>
+                        </div>
+                        <div class="col-6">
+                            <button>End Shelves</button>
+                        </div>
+                    </div>
+                    <!-- RECENTLY ADDED -->
+                    <div class="row text-center my-2" id="recently-added-title">
+                        <div class="col-12">
+                            <h6>Recently Added to Basket:</h6>
+                        </div>
+                    </div>
+                    <div class="row text-center my-2 recent-row" id="recent-table">
+                        <div class="col-12">
+                            <table class="table">
+                                <tr>
+                                    <td><i class="far fa-star"></i></td>
+                                    <td>Bananas</td>
+                                    <td>1</td>
+                                    <td><i class="far fa-trash-alt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-star"></i></td>
+                                    <td>Broccoli</td>
+                                    <td>3</td>
+                                    <td><i class="far fa-trash-alt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-star"></i></td>
+                                    <td>Onions</td>
+                                    <td>2</td>
+                                    <td><i class="far fa-trash-alt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-star"></i></td>
+                                    <td>Garlic</td>
+                                    <td>1</td>
+                                    <td><i class="far fa-trash-alt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-star"></i></td>
+                                    <td>Oranges</td>
+                                    <td>4</td>
+                                    <td><i class="far fa-trash-alt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-star"></i></td>
+                                    <td>Avocados</td>
+                                    <td>2</td>
+                                    <td><i class="far fa-trash-alt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-star"></i></td>
+                                    <td>Strawberries</td>
+                                    <td>1</td>
+                                    <td><i class="far fa-trash-alt"></i></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row text-center my-2" id="create-button">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary">Create Shopping List</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row text-center my-2">
-                <div class="col col-xs-12 col-md-4">
-                    <button class="mx-2">-</button><span>1</span><button class="mx-2">+</button>
-                </div>
-            </div>
-            <div class="row text-center my-2">
-                <div class="col col-xs-4 col-md-1">
-                    <button>Veg & Fruit</button>
-                </div>
-                <div class="col col-xs-4 col-md-1">
-                    <button>Front Shelves</button>
-                </div>
-                <div class="col col-xs-4 col-md-1">
-                    <button>Fridges</button>
-                </div>
-            </div>
-            <div class="row text-center my-2">
-                <div class="col col-xs-4 col-md-1">
-                    <button>Freezers</button>
-                </div>
-                <div class="col col-xs-4 col-md-1">
-                    <button>Middle Shelves</button>
-                </div>
-                <div class="col col-xs-4 col-md-1">
-                    <button>End Shelves</button>
+                <!-- SHOPPING LIST -->
+                <div class="col-sm-7 d-none d-sm-block">
+                    <div class="row">
+                        <div id="banner-img"></div>
+                    </div>
+                    <div class="row">
+                        <div id="location-nav" class="bg-light p-2">
+                            <ul class="nav-buttons navtabs-buttons">
+                                <li class="px-4">Fruit & Veg</li>
+                                <li class="px-4">Front Shelves</li>
+                                <li class="px-4">Fridges</li>
+                                <li class="px-4">Freezers</li>
+                                <li class="px-4">Middle Shelves</li>
+                                <li class="px-4">End Shelves</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid" id="recently-added">
-            <div class="row text-center my-2">
-                <div class="col col-xs-12 col-md-4">
-                    <h6>Recently Added to Basket:</h6>
-                </div>
-            </div>
-            <div class="row text-center my-2 recent-row" id="recent-table">
-                <div class="col col-xs-12 col-md-4">
-                    <table class="table">
-                        <tr>
-                            <td><i class="far fa-star"></i></td>
-                            <td>Bananas</td>
-                            <td>1</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><i class="far fa-star"></i></td>
-                            <td>Broccoli</td>
-                            <td>3</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><i class="far fa-star"></i></td>
-                            <td>Onions</td>
-                            <td>2</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><i class="far fa-star"></i></td>
-                            <td>Garlic</td>
-                            <td>1</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><i class="far fa-star"></i></td>
-                            <td>Oranges</td>
-                            <td>4</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><i class="far fa-star"></i></td>
-                            <td>Avocados</td>
-                            <td>2</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><i class="far fa-star"></i></td>
-                            <td>Strawberries</td>
-                            <td>1</td>
-                            <td><i class="far fa-trash-alt"></i></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid" id="create">
-            <div class="row text-center my-2">
-                <div class="col col-xs-12 col-md-4">
-                    <button type="button" class="btn btn-primary">Create Shopping List</button>
-                </div>
-            </div>
-        </div>
+
+
+
+
+
         <footer class="footer" id="fixed-footer">
             <div class="container-fluid">
                 <div class="row text-center py-3">
