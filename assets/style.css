@@ -42,3 +42,32 @@
 .table-row {
     border-bottom: gainsboro dotted 1px;
 }
+
+.fruitveg {
+    background-color: red;
+}
+
+.frontshelves {
+    background-color: blue;
+}
+
+.fridges {
+    background-color: yellow;
+}
+
+.freezers {
+    background-color: purple;
+}
+
+.middleshelves {
+    background-color: green;
+}
+
+.endshelves {
+    background-color: pink;
+}
+
+.location {
+    border: solid black 2px;
+    width: 100px !important;
+}
