@@ -29,9 +29,18 @@ ul.nav-buttons {
     white-space: nowrap;
     overflow-x: scroll;
     width: 54vw;
+    /* FIX THIS */
 }
 
 ul.nav-buttons li {
     display: inline-block;
     float: none;
+}
+
+.star {
+    border-right: red double;
+}
+
+.table-row {
+    border-bottom: gainsboro dotted 1px;
 }
