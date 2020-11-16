@@ -17,7 +17,7 @@
 #banner-img {
     background-image: url("https://bit.ly/2H4Q3AU");
     background-color: #cccccc;
-    width: 95%;
+    width: 100%;
     height: 200px;
     object-fit: cover;
     background-position: 80% 80%;
@@ -25,14 +25,12 @@
     border-radius: 8px 8px 0px 0px;
 }
 
-ul.nav-buttons {
+#location-nav {
     white-space: nowrap;
     overflow-x: scroll;
-    width: 54vw;
-    /* FIX THIS */
 }
 
-ul.nav-buttons li {
+#location-nav li {
     display: inline-block;
     float: none;
 }
