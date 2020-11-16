@@ -15,7 +15,7 @@
     <body>
         <div class="container-fluid"> 
             <div class="row">
-                <div class="col-xs-12 col-sm-5">
+                <div class="col-xs-12 col-sm-12 col-md-5">
                     <div class="row text-center my-4">
                         <div class="col-12">
                             <h1>Shoppr <i class="fas fa-shopping-basket"></i></h1>
@@ -24,7 +24,7 @@
                     <div class="row text-center my-2">
                         <div class="col-12">
                             <h4>Add an item:</h4>
-                            <input type="text">
+                            <input type="text" class="form-control text-center">
                         </div>
                     </div>
                     <div class="row text-center my-2">
@@ -33,27 +33,27 @@
                         </div>
                     </div>
                     <div class="row text-center my-2">
-                        <div class="col-6 my-4">
+                        <div class="col-6 my-3">
                             <span class="fruitveg location p-2">Fruit & Veg</span>
                         </div>
-                        <div class="col-6 my-4">
+                        <div class="col-6 my-3">
                             <span class="frontshelves location p-2">Front Shelves</span>
                         </div>
-                        <div class="col-6 my-4">
+                        <div class="col-6 my-3">
                             <span class="fridges location p-2">Fridges</span>
                         </div>
-                        <div class="col-6 my-4">
+                        <div class="col-6 my-3">
                             <span class="freezers location p-2">Freezers</span>
                         </div>
-                        <div class="col-6 my-4">
+                        <div class="col-6 my-3">
                             <span class="middleshelves location p-2">Middle Shelves</span>
                         </div>
-                        <div class="col-6 my-4">
+                        <div class="col-6 my-3">
                             <span class="endshelves location p-2">End Shelves</span>
                         </div>
                     </div>
                     <!-- RECENTLY ADDED -->
-                    <div class="container-fluid d-xs-block d-sm-none">
+                    <div class="container-fluid d-xs-block d-sm-block d-md-none">
                         <div class="row text-center my-2" id="recently-added-title">
                             <div class="col-12">
                                 <h6>Recently Added to Basket:</h6>
@@ -108,15 +108,14 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row text-center my-2" id="create-button">
+                    <div class="row text-center my-2 d-none d-xs-none d-sm-none d-md-block" id="create-button">
                         <div class="col-12">
                             <button type="button" class="btn btn-primary">Create Shopping List</button>
                         </div>
                     </div>
                 </div>
                 <!-- SHOPPING LIST -->
-                <div class="col-sm-7 d-none d-sm-block my-4">
+                <div class="col-md-7 d-none d-xs-none d-sm-none d-md-block my-4">
                     <div class="row">
                         <div id="banner-img" class="mr-3"></div>
                     </div>
@@ -168,14 +167,14 @@
 
 
 
-        <footer class="footer d-xs-block d-sm-none" id="fixed-footer">
+        <footer class="footer d-xs-block d-sm-block d-md-none" id="fixed-footer">
             <div class="container-fluid">
                 <div class="row text-center py-3">
-                    <div class="col-6">
-                        Add
+                    <div class="col-6 footer-create">
+                        Create Shopping List
                     </div>
                     <div class="col-6">
-                        Archive
+                        Go to Archive
                     </div>
                 </div>
             </div>
