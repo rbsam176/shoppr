@@ -36,13 +36,13 @@ $(document).ready(function() {
         <tr class="table-row">
             <td class="quantity-field red-line">${itemQuantity}</td>
             <td class="item-field">${itemName}</td>
-            <td> <button class="favourite-field"><i class="far fa-star"></i></button></td>
+            <td><button class="favourite-field"><i class="far fa-star"></i></button></td>
             <td><button class="remove-field"><i class="far fa-trash-alt"></i></button></td>
         </tr>
         `);
     }
 
-    let items = [];
+    items = [];
 
     $(".add-item").on("click", function() {
         var itemInput = {
@@ -72,9 +72,8 @@ $(document).ready(function() {
 
     function addFavourite(tableName){
         $(tableName).on("click", ".favourite-field", function() {
-            var itemName = $(this).closest(".item-field").text();
-            console.log("hello" + itemName);
-            var itemIndex = items.findIndex(x => x.itemName === 'banana');
+            var itemName = $(this).closest("tr").find(".item-field").text();
+            var itemIndex = items.findIndex(x => x.itemName === itemName);
             console.log(items[itemIndex]);
             items[itemIndex].itemFavourite = true;
             console.log(items[itemIndex]);
