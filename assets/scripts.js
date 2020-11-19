@@ -85,22 +85,37 @@ $(document).ready(function() {
     removeRow("#middle-shelves-table");
     removeRow("#end-shelves-table");
 
-    function addFavourite(tableName){
+    // function addFavourite(tableName){
+    //     $(tableName).on("click", ".favourite-field", function() {
+    //         var favouriteItemName = $(this).closest("tr").find(".item-field").text();
+    //         var itemIndex = items.findIndex(x => x.itemName === favouriteItemName);
+    //         items[itemIndex].itemFavourite = true;
+    //         $(this).closest(".favourite-field").addClass("favourite-enable");
+    //         console.log(`Added ${favouriteItemName} to favourites`);
+    //     })
+    // }
+
+    function toggleFavourite(tableName){
         $(tableName).on("click", ".favourite-field", function() {
             var favouriteItemName = $(this).closest("tr").find(".item-field").text();
             var itemIndex = items.findIndex(x => x.itemName === favouriteItemName);
-            items[itemIndex].itemFavourite = true;
-            $(this).closest(".favourite-field").addClass("favourite-enable");
-            console.log(`Added ${favouriteItemName} to favourites`);
+            $(this).closest(".favourite-field").toggleClass("favourite-enable");
+            if (items[itemIndex].itemFavourite != true) {
+                items[itemIndex].itemFavourite = true;
+                console.log("favourite status is " + items[itemIndex].itemFavourite);
+            } else {
+                items[itemIndex].itemFavourite = false;
+                console.log("favourite status is " + items[itemIndex].itemFavourite);
+            }
         })
     }
 
-    addFavourite("#fruit-veg-table");
-    addFavourite("#front-shelves-table");
-    addFavourite("#fridges-table");
-    addFavourite("#freezers-table");
-    addFavourite("#middle-shelves-table");
-    addFavourite("#end-shelves-table");
+    toggleFavourite("#fruit-veg-table");
+    toggleFavourite("#front-shelves-table");
+    toggleFavourite("#fridges-table");
+    toggleFavourite("#freezers-table");
+    toggleFavourite("#middle-shelves-table");
+    toggleFavourite("#end-shelves-table");
 
     
 
