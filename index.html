@@ -121,27 +121,54 @@
                         <div id="banner-img" class="mr-3"></div>
                     </div>
                     <div class="row">
-                        <div id="location-nav" class="bg-light p-2 mr-3">
-                            <ul class="my-1">
-                                <li class="px-4">Fruit & Veg</li>
-                                <li class="px-4">Front Shelves</li>
-                                <li class="px-4">Fridges</li>
-                                <li class="px-4">Freezers</li>
-                                <li class="px-4">Middle Shelves</li>
-                                <li class="px-4">End Shelves</li>
-                            </ul>
+                        <div id="accordion" class="mr-3">
+                            <!-- FRUIT & VEG HEADER -->
+                            <div class="card">
+                                <div class="card-header ml-0">
+                                    <h5 class="ml-0 text-center">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFruitVeg">
+                                            Fruits & Veg
+                                        </button>
+                                    </h5>
+                                </div>
+                                <!-- FRUIT & VEG TABLE -->
+                                <div id="collapseFruitVeg" class="collapse show" data-parent="#accordion">
+                                    <div class="card-body p-0">
+                                        <div class="row text-center m-0">
+                                            <table id="fruit-veg-table" class="table m-0"></table>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- FRONT SHELVES HEADER -->
+                            <div class="card">
+                                <div class="card-header ml-0">
+                                    <h5 class="ml-0 text-center">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFrontShelves">
+                                            Front Shelves
+                                        </button>
+                                    </h5>
+                                </div>
+                                <!-- FRUIT & VEG TABLE -->
+                                <div id="collapseFrontShelves" class="collapse show" data-parent="#accordion">
+                                    <div class="card-body p-0">
+                                        <div class="row text-center m-0">
+                                            <table id="front-shelves-table" class="table m-0"></table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row text-center">
-                        <table id="table" class="table mr-3">
+                    <!-- <div class="row text-center"> -->
+                        <!-- <table id="table" class="table mr-3"> -->
                             <!-- <tr class="table-row">
                                 <td class="quantity-field red-line"></td>
                                 <td class="item-field"></td>
                                 <td class="favourite-field"><i class="far fa-star"></i></td>
                                 <td class="remove-field"><i class="far fa-trash-alt"></i></td>
                             </tr> -->
-                        </table>
-                    </div>
+                        <!-- </table> -->
+                    <!-- </div> -->
                 </div>
             </div>
         </div>

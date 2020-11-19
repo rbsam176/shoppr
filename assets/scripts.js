@@ -44,22 +44,25 @@ $(document).ready(function() {
 
     items = [];
 
-    $(".add-item").on("click", function() {
-        var itemInput = {
-            id: Date.now(),
-            itemName: $("#item-name").val(),
-            itemQuantity: $("#quantity-counter").text(),
-            itemLocation: $(this).text(),
-            itemFavourite: false
-        };
-        if (itemInput.itemName != ""){
-            items.push(itemInput);
-            resetInput();
-            insertRowData("table", itemInput.itemQuantity, itemInput.itemName);
-        }
+    function captureInput(location, tableName){
+        $(location).on("click", function() {
+            var itemInput = {
+                id: Date.now(),
+                itemName: $("#item-name").val(),
+                itemQuantity: $("#quantity-counter").text(),
+                itemLocation: $(this).text(),
+                itemFavourite: false
+            };
+            if (itemInput.itemName != ""){
+                items.push(itemInput);
+                resetInput();
+                insertRowData(tableName, itemInput.itemQuantity, itemInput.itemName);
+            }
+        });
+    };
 
-        // alert(items[0]['itemName']);
-    });
+    captureInput(".fruitveg", "#fruit-veg-table");
+    captureInput(".frontshelves", "#front-shelves-table");
 
     // Source: https://stackoverflow.com/a/171293
     function removeRow(tableName){
@@ -71,7 +74,8 @@ $(document).ready(function() {
         });
     }
 
-    removeRow("#table");
+    removeRow("#fruit-veg-table");
+    removeRow("#front-shelves-table");
 
     function addFavourite(tableName){
         $(tableName).on("click", ".favourite-field", function() {
@@ -83,7 +87,8 @@ $(document).ready(function() {
         })
     }
 
-    addFavourite("#table");
+    addFavourite("#fruit-veg-table");
+    addFavourite("#front-shelves-table");
 
     
 
