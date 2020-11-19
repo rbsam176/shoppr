@@ -7,9 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="assets/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>  
-    <link href="assets/style.css" rel="stylesheet">
+    <script src="assets/scripts.js"></script>
     <title>Shoppr</title>
 </head>
     <body>
@@ -24,32 +25,32 @@
                     <div class="row text-center my-2">
                         <div class="col-12">
                             <h4>Add an item:</h4>
-                            <input type="text" class="form-control text-center">
+                            <input type="text" id="item-name" class="form-control text-center" placeholder="Add an item:">
                         </div>
                     </div>
                     <div class="row text-center my-2">
                         <div class="col col-xs-12 col-md-12">
-                            <button class="mx-2">-</button><span>1</span><button class="mx-2">+</button>
+                            <button id="minus-button" class="mx-2">-</button><span id="quantity-counter">1</span><button id="plus-button" class="mx-2">+</button>
                         </div>
                     </div>
                     <div class="row text-center my-2">
                         <div class="col-6 my-3">
-                            <span class="fruitveg location p-2">Fruit & Veg</span>
+                            <button class="fruitveg location addItem p-2">Fruit & Veg</button>
                         </div>
                         <div class="col-6 my-3">
-                            <span class="frontshelves location p-2">Front Shelves</span>
+                            <button class="frontshelves location addItem p-2">Front Shelves</button>
                         </div>
                         <div class="col-6 my-3">
-                            <span class="fridges location p-2">Fridges</span>
+                            <button class="fridges location addItem p-2">Fridges</button>
                         </div>
                         <div class="col-6 my-3">
-                            <span class="freezers location p-2">Freezers</span>
+                            <button class="freezers location addItem p-2">Freezers</button>
                         </div>
                         <div class="col-6 my-3">
-                            <span class="middleshelves location p-2">Middle Shelves</span>
+                            <button class="middleshelves location addItem p-2">Middle Shelves</button>
                         </div>
                         <div class="col-6 my-3">
-                            <span class="endshelves location p-2">End Shelves</span>
+                            <button class="endshelves location addItem p-2">End Shelves</button>
                         </div>
                     </div>
                     <!-- RECENTLY ADDED -->
@@ -110,7 +111,7 @@
                     </div>
                     <div class="row text-center my-2 d-none d-xs-none d-sm-none d-md-block" id="create-button">
                         <div class="col-12">
-                            <button type="button" class="btn btn-primary">Create Shopping List</button>
+                            <button type="button" id="create-button" class="btn btn-primary">Create Shopping List</button>
                         </div>
                     </div>
                 </div>

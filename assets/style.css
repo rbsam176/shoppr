@@ -8,6 +8,12 @@
     color: white;
 }
 
+.add-item {
+    width: 80%;
+    height: 2.5em;
+    border-radius: 8px;
+}
+
 #recent-table{
     height: 28vh;
     overflow-y: auto;
@@ -49,3 +55,4 @@
     border: dashed black 2px;
     white-space: nowrap;
 }
+
