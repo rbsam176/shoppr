@@ -34,8 +34,8 @@ $(document).ready(function() {
     function insertRowData(tableName, itemQuantity, itemName){
         $(tableName).append(`
         <tr class="table-row">
-            <td class="quantity-field red-line">${itemQuantity}</td>
-            <td class="item-field">${itemName}</td>
+            <td class="quantity-field px-4 red-line">${itemQuantity}</td>
+            <td class="item-field w-75">${itemName}</td>
             <td><button class="favourite-field"><i class="far fa-star"></i></button></td>
             <td><button class="remove-field"><i class="far fa-trash-alt"></i></button></td>
         </tr>
@@ -63,6 +63,10 @@ $(document).ready(function() {
 
     captureInput(".fruitveg", "#fruit-veg-table");
     captureInput(".frontshelves", "#front-shelves-table");
+    captureInput(".fridges", "#fridges-table");
+    captureInput(".freezers", "#freezers-table");
+    captureInput(".middleshelves", "#middle-shelves-table");
+    captureInput(".endshelves", "#end-shelves-table");
 
     // Source: https://stackoverflow.com/a/171293
     function removeRow(tableName){
@@ -76,6 +80,10 @@ $(document).ready(function() {
 
     removeRow("#fruit-veg-table");
     removeRow("#front-shelves-table");
+    removeRow("#fridges-table");
+    removeRow("#freezers-table");
+    removeRow("#middle-shelves-table");
+    removeRow("#end-shelves-table");
 
     function addFavourite(tableName){
         $(tableName).on("click", ".favourite-field", function() {
@@ -83,12 +91,16 @@ $(document).ready(function() {
             var itemIndex = items.findIndex(x => x.itemName === favouriteItemName);
             items[itemIndex].itemFavourite = true;
             $(this).closest(".favourite-field").addClass("favourite-enable");
-            console.log(`Added ${favouriteItemName} to array`);
+            console.log(`Added ${favouriteItemName} to favourites`);
         })
     }
 
     addFavourite("#fruit-veg-table");
     addFavourite("#front-shelves-table");
+    addFavourite("#fridges-table");
+    addFavourite("#freezers-table");
+    addFavourite("#middle-shelves-table");
+    addFavourite("#end-shelves-table");
 
     
 
