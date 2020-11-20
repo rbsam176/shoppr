@@ -59,8 +59,9 @@
                 resetInput();
                 insertRowData(tableName, itemInput.itemQuantity, itemInput.itemName);
                 let collapseParent = $(tableName).parent().parent().parent();
-                $(".collapse").collapse('hide');
+                $(".collapse").not(collapseParent).collapse('hide');
                 $(collapseParent).addClass('show');
+                $(collapseParent).removeClass('hide');
             }
         });
     };
