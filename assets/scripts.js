@@ -58,12 +58,19 @@
                 items.push(itemInput);
                 resetInput();
                 insertRowData(tableName, itemInput.itemQuantity, itemInput.itemName);
-                let note = $(tableName).parent().parent().parent();
+                let collapseParent = $(tableName).parent().parent().parent();
                 $(".collapse").collapse('hide');
-                $(note).addClass('show');
+                $(collapseParent).addClass('show');
             }
         });
     };
+
+    function openSections(){
+        $("#open-sections").on("click", function() {
+            $(".collapse").removeClass('hide');
+            $(".collapse").addClass('show');
+        });
+    }
 
     // captureInput(".fruitveg", "#fruit-veg-table");
     // captureInput(".frontshelves", "#front-shelves-table");
@@ -141,6 +148,8 @@ $(document).ready(function() {
     captureInput(".freezers", "#freezers-table");
     captureInput(".middleshelves", "#middle-shelves-table");
     captureInput(".endshelves", "#end-shelves-table");
+
+    openSections();
 
     removeRow("#fruit-veg-table");
     removeRow("#front-shelves-table");
