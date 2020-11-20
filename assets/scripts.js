@@ -58,6 +58,9 @@
                 items.push(itemInput);
                 resetInput();
                 insertRowData(tableName, itemInput.itemQuantity, itemInput.itemName);
+                let note = $(tableName).parent().parent().parent();
+                $(".collapse").collapse('hide');
+                $(note).addClass('show');
             }
         });
     };
