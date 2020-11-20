@@ -13,16 +13,12 @@ describe("decreaseQuantity", function() {
 });
 
 // DOES IT RETURN THE QUANTITY?
-// describe("checkQuantity", function() {
-//     it("should return a number", function(){
-//         expect(Number.isInteger(1)).toBeTruthy();
-//     })
-// });
-
-// DOES IT RETURN THE QUANTITY?
+// Source: https://stackoverflow.com/a/21269332
 describe("checkQuantity", function() {
     it("should return a number", function(){
-        expect(typeof quantity === 'number'); 
+        expect(quantity).toEqual(jasmine.any(Number));
     })
 });
+
+
 
