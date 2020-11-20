@@ -13,8 +13,16 @@ describe("decreaseQuantity", function() {
 });
 
 // DOES IT RETURN THE QUANTITY?
+// describe("checkQuantity", function() {
+//     it("should return a number", function(){
+//         expect(Number.isInteger(1)).toBeTruthy();
+//     })
+// });
+
+// DOES IT RETURN THE QUANTITY?
 describe("checkQuantity", function() {
     it("should return a number", function(){
-        expect(Number.isInteger(1)).toBeTruthy();
+        expect(typeof quantity === 'number'); 
     })
 });
+
