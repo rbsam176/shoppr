@@ -20,5 +20,3 @@ describe("checkQuantity", function() {
     })
 });
 
-
-

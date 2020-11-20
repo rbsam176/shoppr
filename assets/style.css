@@ -47,6 +47,19 @@
     border-right: red double;
 }
 
+input[type="checkbox"] {
+    transform:scale(1.5, 1.5);
+    margin: 0px 10px;
+    vertical-align: middle;
+  }
+
+.quantity-number {
+    padding: 5px 8px;
+    vertical-align: middle;
+    border: dotted black 1px;
+    border-radius: 8px;
+}
+
 .table-row {
     border-bottom: gainsboro dotted 1px;
 }
