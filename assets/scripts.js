@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
     function increaseQuantity(quantity){
         return quantity + 1;
     }
@@ -61,12 +61,12 @@ $(document).ready(function() {
         });
     };
 
-    captureInput(".fruitveg", "#fruit-veg-table");
-    captureInput(".frontshelves", "#front-shelves-table");
-    captureInput(".fridges", "#fridges-table");
-    captureInput(".freezers", "#freezers-table");
-    captureInput(".middleshelves", "#middle-shelves-table");
-    captureInput(".endshelves", "#end-shelves-table");
+    // captureInput(".fruitveg", "#fruit-veg-table");
+    // captureInput(".frontshelves", "#front-shelves-table");
+    // captureInput(".fridges", "#fridges-table");
+    // captureInput(".freezers", "#freezers-table");
+    // captureInput(".middleshelves", "#middle-shelves-table");
+    // captureInput(".endshelves", "#end-shelves-table");
 
     // Source: https://stackoverflow.com/a/171293
     function removeRow(tableName){
@@ -78,12 +78,12 @@ $(document).ready(function() {
         });
     }
 
-    removeRow("#fruit-veg-table");
-    removeRow("#front-shelves-table");
-    removeRow("#fridges-table");
-    removeRow("#freezers-table");
-    removeRow("#middle-shelves-table");
-    removeRow("#end-shelves-table");
+    // removeRow("#fruit-veg-table");
+    // removeRow("#front-shelves-table");
+    // removeRow("#fridges-table");
+    // removeRow("#freezers-table");
+    // removeRow("#middle-shelves-table");
+    // removeRow("#end-shelves-table");
 
     // function addFavourite(tableName){
     //     $(tableName).on("click", ".favourite-field", function() {
@@ -110,15 +110,46 @@ $(document).ready(function() {
         })
     }
 
+    // toggleFavourite("#fruit-veg-table");
+    // toggleFavourite("#front-shelves-table");
+    // toggleFavourite("#fridges-table");
+    // toggleFavourite("#freezers-table");
+    // toggleFavourite("#middle-shelves-table");
+    // toggleFavourite("#end-shelves-table");
+
+    
+
+
+
+
+
+$(document).ready(function() {
+
+
+    increaseQuantity();
+    decreaseQuantity();
+    checkQuantity();
+    resetInput();
+    insertRowData();
+
+    captureInput(".fruitveg", "#fruit-veg-table");
+    captureInput(".frontshelves", "#front-shelves-table");
+    captureInput(".fridges", "#fridges-table");
+    captureInput(".freezers", "#freezers-table");
+    captureInput(".middleshelves", "#middle-shelves-table");
+    captureInput(".endshelves", "#end-shelves-table");
+
+    removeRow("#fruit-veg-table");
+    removeRow("#front-shelves-table");
+    removeRow("#fridges-table");
+    removeRow("#freezers-table");
+    removeRow("#middle-shelves-table");
+    removeRow("#end-shelves-table");
+
     toggleFavourite("#fruit-veg-table");
     toggleFavourite("#front-shelves-table");
     toggleFavourite("#fridges-table");
     toggleFavourite("#freezers-table");
     toggleFavourite("#middle-shelves-table");
     toggleFavourite("#end-shelves-table");
-
-    
-
-
 });
-
