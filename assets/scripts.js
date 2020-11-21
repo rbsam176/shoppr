@@ -63,8 +63,30 @@
                 $(collapseParent).addClass('show');
                 $(collapseParent).removeClass('hide');
             }
+            changeBannerImg(location);
         });
     };
+
+    function changeBannerImg(location){
+        if (location == ".fruitveg") {
+            $("#banner-img").css('background-image', 'url(' + "https://bit.ly/2H4Q3AU" + ')');
+        }
+        if (location == ".frontshelves") {
+            $("#banner-img").css('background-image', 'url(' + "https://www.italianfoodexperts.com/wp-content/uploads/2017/11/Vera-pasta-italiana.jpg" + ')');
+        }
+        if (location == ".fridges") {
+            $("#banner-img").css('background-image', 'url(' + "https://post.healthline.com/wp-content/uploads/2019/11/milk-soy-hemp-almond-non-dairy-1200x628-facebook.jpg" + ')');
+        }
+        if (location == ".freezers") {
+            $("#banner-img").css('background-image', 'url(' + "https://post.healthline.com/wp-content/uploads/2020/09/green-peas-thumb-1-732x549.jpg" + ')');
+        }
+        if (location == ".middleshelves") {
+            $("#banner-img").css('background-image', 'url(' + "https://res.cloudinary.com/grohealth/image/upload/$wpsize_!post-thumbnail!,w_1000,h_600,c_fill,g_auto/v1588092404/Low-Carb-Flour.png" + ')');
+        }
+        if (location == ".endshelves") {
+            $("#banner-img").css('background-image', 'url(' + "https://www.thebrewery.co.uk/wp-content/uploads/2020/04/1280px-New_Orleans_Wine-1073x687-1.jpg" + ')');
+        }
+    }
 
     function openSections(){
         $("#open-sections").on("click", function() {
