@@ -32,7 +32,7 @@
     }
 
     function insertRowData(tableName, itemQuantity, itemName){
-        $(tableName).append(`
+        $(tableName).prepend(`
         <tr class="table-row">
             <td class="red-line"><input type="checkbox"></td>
             <td class="quantity-field px-4"><span class="quantity-number">${itemQuantity}x</span></td>
