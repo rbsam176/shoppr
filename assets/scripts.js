@@ -45,6 +45,13 @@
 
     items = [];
 
+    if (JSON.parse(localStorage.getItem('itemNames')) == undefined){
+        var autoFillItems = [];
+    } else {
+        var autoFillItems = JSON.parse(localStorage.getItem('itemNames'));
+    }
+
+
     function captureInput(location, tableName){
         $(location).on("click", function() {
             var itemInput = {
@@ -56,6 +63,10 @@
             };
             if (itemInput.itemName != ""){
                 items.push(itemInput);
+                autoFillItems.push(itemInput);
+
+                localStorage.setItem('itemNames', JSON.stringify(autoFillItems));
+
                 resetInput();
                 insertRowData(tableName, itemInput.itemQuantity, itemInput.itemName);
                 let collapseParent = $(tableName).parent().parent().parent();
