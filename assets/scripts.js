@@ -64,8 +64,10 @@
             };
             rememberedItem.push(itemNameLocation);
         }
-
     }
+
+
+
 
     var rememberedItemNames = [];
     for (x in rememberedItem){
@@ -76,14 +78,15 @@
         source: rememberedItemNames
       });
 
+    // THIS REMOVES DUPLICATES BUT AFTER AUTOCOMPLETE
+    var rememberedItemNames = new Set(rememberedItemNames);
+    
+
     $("#clear-autofill").on("click", function() {
         localStorage.clear();
         alert("Autofill Cleared")
         location.reload();
     })
-
-
-
 
 
     function captureInput(location, tableName){
