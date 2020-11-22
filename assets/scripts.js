@@ -52,6 +52,40 @@
     }
 
 
+
+    for (x in autoFillItems){
+        if (rememberedItem == undefined && itemNameLocation == undefined){
+            var rememberedItem = [];
+            var itemNameLocation = {};
+        } else {
+            itemNameLocation = {
+                RememberedItemName: autoFillItems[x].itemName,
+                RememberedItemLocation: autoFillItems[x].itemLocation
+            };
+            rememberedItem.push(itemNameLocation);
+        }
+
+    }
+
+    var rememberedItemNames = [];
+    for (x in rememberedItem){
+        rememberedItemNames.push(rememberedItem[x].RememberedItemName);
+    }
+
+    $( "#item-name" ).autocomplete({
+        source: rememberedItemNames
+      });
+
+    $("#clear-autofill").on("click", function() {
+        localStorage.clear();
+        alert("Autofill Cleared")
+        location.reload();
+    })
+
+
+
+
+
     function captureInput(location, tableName){
         $(location).on("click", function() {
             var itemInput = {
@@ -63,8 +97,8 @@
             };
             if (itemInput.itemName != ""){
                 items.push(itemInput);
-                autoFillItems.push(itemInput);
 
+                autoFillItems.push(itemInput);
                 localStorage.setItem('itemNames', JSON.stringify(autoFillItems));
 
                 resetInput();
@@ -198,4 +232,5 @@ $(document).ready(function() {
     toggleFavourite("#freezers-table");
     toggleFavourite("#middle-shelves-table");
     toggleFavourite("#end-shelves-table");
+
 });
