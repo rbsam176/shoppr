@@ -41,6 +41,7 @@
 
     // IF EMPTY, AN ARRAY 'rememberedItem' & AN OBJECT 'itemNameLocation' IS CREATED
     // LOOPS THROUGH ALL ITEMS IN AUTOFILL LOCAL MEMORY AND STORES THEM IN AN OBJECT WITHIN AN ARRAY
+
     for (x in autoFillItems){
         if (rememberedItem == undefined && itemNameLocation == undefined){
             var rememberedItem = [];
@@ -124,7 +125,8 @@
                 var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
                 $("button:contains('" + matchedLocation + "')").css("color","red");
             } else {
-                $("button").css("color","black")
+                // $("button").css("color","black")
+                // MIGHT NOT NEED THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
         })
     }
