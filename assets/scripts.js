@@ -39,20 +39,25 @@
         var autoFillItems = JSON.parse(localStorage.getItem('inputObjects'));
     }
 
-    // IF EMPTY, AN ARRAY 'rememberedItem' & AN OBJECT 'itemNameLocation' IS CREATED
     // LOOPS THROUGH ALL ITEMS IN AUTOFILL LOCAL MEMORY AND STORES THEM IN AN OBJECT WITHIN AN ARRAY
-
-    for (x in autoFillItems){
-        if (rememberedItem == undefined && itemNameLocation == undefined){
-            var rememberedItem = [];
-            var itemNameLocation = {};
-        } else {
+    // RATHER THAN CREATING A NEW OBJECT, MAYBE THIS COULD PUSH JUST THE VALUES NEEDED FROM THE EXISTING OBJECT autoFillItems
+    function createMemoryObject(){
+        for (x in autoFillItems){
             itemNameLocation = {
                 RememberedItemName: autoFillItems[x].itemName,
                 RememberedItemLocation: autoFillItems[x].itemLocation
             };
             rememberedItem.push(itemNameLocation);
         }
+    }
+
+    // IF EMPTY, AN ARRAY 'rememberedItem' & AN OBJECT 'itemNameLocation' IS CREATED
+    if (rememberedItem == undefined && itemNameLocation == undefined){
+        var rememberedItem = [];
+        var itemNameLocation = {};
+        createMemoryObject();
+    } else {
+        createMemoryObject();
     }
 
     // GRABS TEXT INPUT VALUES, MAPS THEM TO AN OBJECT 'itemInput'
@@ -125,8 +130,7 @@
                 var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
                 $("button:contains('" + matchedLocation + "')").css("color","red");
             } else {
-                // $("button").css("color","black")
-                // MIGHT NOT NEED THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                $("button").css("color","black")
             }
         })
     }
