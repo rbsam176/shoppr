@@ -72,12 +72,43 @@
         rememberedItemNames.push(rememberedItem[x].RememberedItemName);
     }
     
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
     var removedDuplicatesSet = new Set(rememberedItemNames);
+    // WASN'T WORKING UNTIL I REALISED IT WAS A SET NOT AN ARRAY, CONVERTED:
     var removedDuplicatesArray = Array.from(removedDuplicatesSet);
 
     $( "#item-name" ).autocomplete({
-        source: removedDuplicatesArray
+        source: removedDuplicatesArray,
+
+        select: function (e, ui) {
+            // SOURCE: https://stackoverflow.com/questions/19675069/how-to-get-value-of-selected-item-in-autocomplete
+
+            if(jQuery.inArray(ui.item.label, removedDuplicatesArray) !== -1){
+                var foundIndex = removedDuplicatesArray.indexOf(ui.item.label)
+                var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
+                $("button:contains('" + matchedLocation + "')").css("color","red");
+            } else {
+                $("button").css("color","black")
+            }
+
+        }
     });
+
+
+
+
+    function inputMatch(){
+        $("#item-name").on("propertychange click input change paste keyup", function() {
+            if(jQuery.inArray(this.value, removedDuplicatesArray) !== -1){
+                var foundIndex = removedDuplicatesArray.indexOf(this.value)
+                var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
+                $("button:contains('" + matchedLocation + "')").css("color","red");
+            } else {
+                $("button").css("color","black")
+            }
+        })
+    }
+
 
 
 
@@ -205,6 +236,8 @@
 
 
 $(document).ready(function() {
+
+    inputMatch();
 
     increaseQuantity();
     decreaseQuantity();
