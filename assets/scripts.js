@@ -66,21 +66,20 @@
         }
     }
 
-
-
-
     var rememberedItemNames = [];
+
     for (x in rememberedItem){
         rememberedItemNames.push(rememberedItem[x].RememberedItemName);
     }
+    
+    var removedDuplicatesSet = new Set(rememberedItemNames);
+    var removedDuplicatesArray = Array.from(removedDuplicatesSet);
 
     $( "#item-name" ).autocomplete({
-        source: rememberedItemNames
-      });
+        source: removedDuplicatesArray
+    });
 
-    // THIS REMOVES DUPLICATES BUT AFTER AUTOCOMPLETE
-    var rememberedItemNames = new Set(rememberedItemNames);
-    
+
 
     $("#clear-autofill").on("click", function() {
         localStorage.clear();
