@@ -12,20 +12,6 @@
         return (quantity);
     }
 
-    $("#plus-button").on("click", function() {
-        checkQuantity();
-        if (checkQuantity() < 10){
-            $("#quantity-counter").text(increaseQuantity(quantity));
-        }
-    });
-
-    $("#minus-button").on("click", function() {
-        checkQuantity();
-        if (checkQuantity() > 1){
-            $("#quantity-counter").text(decreaseQuantity(quantity));
-        }
-    });
-
     function resetInput(){
         $("#quantity-counter").text(1);
         $("#item-name").val('');
@@ -45,14 +31,16 @@
 
     items = [];
 
-    if (JSON.parse(localStorage.getItem('itemNames')) == undefined){
+    // IF TEXT INPUT IS EMPTY: CREATE EMPTY ARRAY
+    // IF POPULATED: GRAB VALUE, STORE IN ARRAY IN LOCAL STORAGE
+    if (JSON.parse(localStorage.getItem('inputObjects')) == undefined){
         var autoFillItems = [];
     } else {
-        var autoFillItems = JSON.parse(localStorage.getItem('itemNames'));
+        var autoFillItems = JSON.parse(localStorage.getItem('inputObjects'));
     }
 
-
-
+    // IF EMPTY, AN ARRAY 'rememberedItem' & AN OBJECT 'itemNameLocation' IS CREATED
+    // LOOPS THROUGH ALL ITEMS IN AUTOFILL LOCAL MEMORY AND STORES THEM IN AN OBJECT WITHIN AN ARRAY
     for (x in autoFillItems){
         if (rememberedItem == undefined && itemNameLocation == undefined){
             var rememberedItem = [];
@@ -66,59 +54,13 @@
         }
     }
 
-    var rememberedItemNames = [];
-
-    for (x in rememberedItem){
-        rememberedItemNames.push(rememberedItem[x].RememberedItemName);
-    }
-    
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-    var removedDuplicatesSet = new Set(rememberedItemNames);
-    // WASN'T WORKING UNTIL I REALISED IT WAS A SET NOT AN ARRAY, CONVERTED:
-    var removedDuplicatesArray = Array.from(removedDuplicatesSet);
-
-    $( "#item-name" ).autocomplete({
-        source: removedDuplicatesArray,
-
-        select: function (e, ui) {
-            // SOURCE FOR USING ui.item.label: https://stackoverflow.com/questions/19675069/how-to-get-value-of-selected-item-in-autocomplete
-
-            if(jQuery.inArray(ui.item.label, removedDuplicatesArray) !== -1){
-                var foundIndex = removedDuplicatesArray.indexOf(ui.item.label)
-                var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
-                $("button:contains('" + matchedLocation + "')").css("color","red");
-            } else {
-                $("button").css("color","black")
-            }
-
-        }
-    });
-
-
-
-
-    function inputMatch(){
-        $("#item-name").on("propertychange click input change paste keyup", function() {
-            if(jQuery.inArray(this.value, removedDuplicatesArray) !== -1){
-                var foundIndex = removedDuplicatesArray.indexOf(this.value)
-                var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
-                $("button:contains('" + matchedLocation + "')").css("color","red");
-            } else {
-                $("button").css("color","black")
-            }
-        })
-    }
-
-
-
-
-    $("#clear-autofill").on("click", function() {
-        localStorage.clear();
-        alert("Autofill Cleared")
-        location.reload();
-    })
-
-
+    // GRABS TEXT INPUT VALUES, MAPS THEM TO AN OBJECT 'itemInput'
+    // PUSHES OBJECT 'itemInput' TO ARRAY 'items'
+    // SENDS 'autoFillItems' ARRAY VALUES TO LOCAL MEMORY OBJECT 'inputObjects'
+    // RESETS INPUT FIELD TO EMPTY
+    // INSERTS VALUES TO TABLE
+    // ONLY SHOWS TABLE THAT WAS USED
+    // CHANGES BANNER IMAGE TO RELEVANT LOCATION
     function captureInput(location, tableName){
         $(location).on("click", function() {
             var itemInput = {
@@ -132,7 +74,7 @@
                 items.push(itemInput);
 
                 autoFillItems.push(itemInput);
-                localStorage.setItem('itemNames', JSON.stringify(autoFillItems));
+                localStorage.setItem('inputObjects', JSON.stringify(autoFillItems));
 
                 resetInput();
                 insertRowData(tableName, itemInput.itemQuantity, itemInput.itemName);
@@ -145,6 +87,54 @@
         });
     };
 
+    // GRABS ALL ITEM NAMES FROM AUTOFILL ARRAY OF OBJECTS
+    var rememberedItemNames = [];
+    for (x in rememberedItem){
+        rememberedItemNames.push(rememberedItem[x].RememberedItemName);
+    }
+    // REMOVES ANY DUPLICATES
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+    var removedDuplicatesSet = new Set(rememberedItemNames);
+    var removedDuplicatesArray = Array.from(removedDuplicatesSet);
+
+    // CREATES AUTOCOMPLETE FEATURE, ASSIGNS ARRAY OF UNIQUE VALUES FROM ABOVE
+    $( "#item-name" ).autocomplete({
+        source: removedDuplicatesArray,
+        select: function (e, ui) {
+            // SOURCE FOR USING ui.item.label: https://stackoverflow.com/questions/19675069/how-to-get-value-of-selected-item-in-autocomplete
+            // WHEN SUGGESTED ITEM CLICKED: HIGHLIGHT LOCATION BUTTON
+            if(jQuery.inArray(ui.item.label, removedDuplicatesArray) !== -1){
+                var foundIndex = removedDuplicatesArray.indexOf(ui.item.label)
+                var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
+                $("button:contains('" + matchedLocation + "')").css("color","red");
+            } else {
+                $("button").css("color","black")
+            }
+        }
+    });
+
+
+    // CHECKS TEXT INPUT VALUE, WHEN MATCHED IT CHECKS IF IT EXISTS IN AUTOFILL MEMORY AND HIGHLIGHTS LOCATION BUTTON
+    function inputMatch(textInput){
+        $(textInput).on("propertychange click input change paste keyup", function() {
+            if(jQuery.inArray(this.value, removedDuplicatesArray) !== -1){
+                var foundIndex = removedDuplicatesArray.indexOf(this.value)
+                var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
+                $("button:contains('" + matchedLocation + "')").css("color","red");
+            } else {
+                $("button").css("color","black")
+            }
+        })
+    }
+
+    // CLEARS THE LOCALSTORAGE MEMORY
+    $("#clear-autofill").on("click", function() {
+        localStorage.clear();
+        alert("Autofill Cleared")
+        location.reload();
+    })
+
+    // SETS EACH LOCATION A CORRESPONDING BANNER IMAGE
     function changeBannerImg(location){
         if (location == ".fruitveg") {
             $("#banner-img").css('background-image', 'url(' + "https://bit.ly/2H4Q3AU" + ')');
@@ -166,20 +156,13 @@
         }
     }
 
-    function openSections(){
-        $("#open-sections").on("click", function() {
-            $(".collapse").removeClass('hide');
-            $(".collapse").addClass('show');
-        });
-    }
+    // OPENS ALL TABLES
+    $("#open-sections").on("click", function() {
+        $(".collapse").removeClass('hide');
+        $(".collapse").addClass('show');
+    });
 
-    // captureInput(".fruitveg", "#fruit-veg-table");
-    // captureInput(".frontshelves", "#front-shelves-table");
-    // captureInput(".fridges", "#fridges-table");
-    // captureInput(".freezers", "#freezers-table");
-    // captureInput(".middleshelves", "#middle-shelves-table");
-    // captureInput(".endshelves", "#end-shelves-table");
-
+    // REMOVES ROW FROM TABLE
     // Source: https://stackoverflow.com/a/171293
     function removeRow(tableName){
         $(tableName).on("click", ".remove-field", function() {
@@ -190,23 +173,7 @@
         });
     }
 
-    // removeRow("#fruit-veg-table");
-    // removeRow("#front-shelves-table");
-    // removeRow("#fridges-table");
-    // removeRow("#freezers-table");
-    // removeRow("#middle-shelves-table");
-    // removeRow("#end-shelves-table");
-
-    // function addFavourite(tableName){
-    //     $(tableName).on("click", ".favourite-field", function() {
-    //         var favouriteItemName = $(this).closest("tr").find(".item-field").text();
-    //         var itemIndex = items.findIndex(x => x.itemName === favouriteItemName);
-    //         items[itemIndex].itemFavourite = true;
-    //         $(this).closest(".favourite-field").addClass("favourite-enable");
-    //         console.log(`Added ${favouriteItemName} to favourites`);
-    //     })
-    // }
-
+    // TOGGLES FAVOURITE STATUS TO TRUE/FALSE AND APPLIES CSS
     function toggleFavourite(tableName){
         $(tableName).on("click", ".favourite-field", function() {
             var favouriteItemName = $(this).closest("tr").find(".item-field").text();
@@ -222,22 +189,23 @@
         })
     }
 
-    // toggleFavourite("#fruit-veg-table");
-    // toggleFavourite("#front-shelves-table");
-    // toggleFavourite("#fridges-table");
-    // toggleFavourite("#freezers-table");
-    // toggleFavourite("#middle-shelves-table");
-    // toggleFavourite("#end-shelves-table");
-
-    
-
-
-
-
-
 $(document).ready(function() {
 
-    inputMatch();
+    $("#plus-button").on("click", function() {
+        checkQuantity();
+        if (checkQuantity() < 10){
+            $("#quantity-counter").text(increaseQuantity(quantity));
+        }
+    });
+
+    $("#minus-button").on("click", function() {
+        checkQuantity();
+        if (checkQuantity() > 1){
+            $("#quantity-counter").text(decreaseQuantity(quantity));
+        }
+    });
+
+    inputMatch("#item-name");
 
     increaseQuantity();
     decreaseQuantity();
@@ -251,8 +219,6 @@ $(document).ready(function() {
     captureInput(".freezers", "#freezers-table");
     captureInput(".middleshelves", "#middle-shelves-table");
     captureInput(".endshelves", "#end-shelves-table");
-
-    openSections();
 
     removeRow("#fruit-veg-table");
     removeRow("#front-shelves-table");
