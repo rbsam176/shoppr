@@ -81,7 +81,7 @@
         source: removedDuplicatesArray,
 
         select: function (e, ui) {
-            // SOURCE: https://stackoverflow.com/questions/19675069/how-to-get-value-of-selected-item-in-autocomplete
+            // SOURCE FOR USING ui.item.label: https://stackoverflow.com/questions/19675069/how-to-get-value-of-selected-item-in-autocomplete
 
             if(jQuery.inArray(ui.item.label, removedDuplicatesArray) !== -1){
                 var foundIndex = removedDuplicatesArray.indexOf(ui.item.label)
