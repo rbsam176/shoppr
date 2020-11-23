@@ -61,6 +61,7 @@
     // INSERTS VALUES TO TABLE
     // ONLY SHOWS TABLE THAT WAS USED
     // CHANGES BANNER IMAGE TO RELEVANT LOCATION
+    // RESETS LOCATION BUTTON TEXT COLOR BACK TO BLACK FROM RED
     function captureInput(location, tableName){
         $(location).on("click", function() {
             var itemInput = {
@@ -84,6 +85,7 @@
                 $(collapseParent).removeClass('hide');
             }
             changeBannerImg(location);
+            $(location).css("color","black")
         });
     };
 
@@ -108,7 +110,7 @@
                 var matchedLocation = rememberedItem[foundIndex].RememberedItemLocation
                 $("button:contains('" + matchedLocation + "')").css("color","red");
             } else {
-                $("button").css("color","black")
+                $("#location_buttons").find("button").css("color","black")
             }
         }
     });
